@@ -11,6 +11,7 @@ import android.os.Bundle;
 public class MainActivity extends AppCompatActivity {
 
     private String tag = MainActivity.class.getSimpleName();
+    private AppData appData;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initMp3Player(){
+        appData = (AppData) getApplication();
 
     }
 
