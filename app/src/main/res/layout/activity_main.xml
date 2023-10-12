@@ -8,13 +8,23 @@
     android:orientation="vertical"
     android:background="@drawable/phone_bg2"
     tools:context=".MainActivity">
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
         >
+        <TextView
+            android:id="@+id/lid_songName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:textSize="26sp"
+            android:textColor="#ff0"
+            android:gravity="center_horizontal"
+            />
 
-    </LinearLayout>
+    </RelativeLayout>
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"

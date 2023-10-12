@@ -22,6 +22,8 @@ public class Mp3PlayerController extends Binder {
         if(!mp3Player.isPlaying()){
             mp3Player.setAudioStreamType(AudioManager.STREAM_MUSIC);
             try {
+                String[] songName = songList.get(appData.mp3SongListHandler.playIndex).split("/");
+                appData.mp3SongListHandler.songName = songName[songName.length-1];
                 mp3Player.setDataSource(songList.get(playIndex));
                 mp3Player.prepare();
                 mp3Player.start();
@@ -55,6 +57,8 @@ public class Mp3PlayerController extends Binder {
         ArrayList<String> songList = appData.mp3SongListHandler.mp3SongList;
         mp3Player.setAudioStreamType(AudioManager.STREAM_MUSIC);
         try {
+            String[] songName = songList.get(appData.mp3SongListHandler.playIndex).split("/");
+            appData.mp3SongListHandler.songName = songName[songName.length-1];
             mp3Player.setDataSource(songList.get(appData.mp3SongListHandler.playIndex));
             mp3Player.prepare();
             mp3Player.start();
@@ -76,6 +80,8 @@ public class Mp3PlayerController extends Binder {
         ArrayList<String> songList = appData.mp3SongListHandler.mp3SongList;
         mp3Player.setAudioStreamType(AudioManager.STREAM_MUSIC);
         try {
+            String[] songName = songList.get(appData.mp3SongListHandler.playIndex).split("/");
+            appData.mp3SongListHandler.songName = songName[songName.length-1];
             mp3Player.setDataSource(songList.get(appData.mp3SongListHandler.playIndex));
             mp3Player.prepare();
             mp3Player.start();

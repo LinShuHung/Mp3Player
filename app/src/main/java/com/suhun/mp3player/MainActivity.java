@@ -12,14 +12,17 @@ import android.content.pm.PackageManager;
 import android.os.Binder;
 import android.os.Bundle;
 import android.os.IBinder;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
     private String tag = MainActivity.class.getSimpleName();
     private AppData appData;
     private Button playBtn;
+    private TextView songName;
     private Mp3PlayerController mp3Controller;
     private boolean isPlayMp3;
 
@@ -66,6 +69,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void initView(){
         playBtn = findViewById(R.id.lid_playBtn);
+        songName = findViewById(R.id.lid_songName);
         playBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -97,6 +101,7 @@ public class MainActivity extends AppCompatActivity {
             isPlayMp3 = true;
             playBtn.setText("Pause");
             mp3Controller.playMp3Song(appData);
+            songName.setText(appData.mp3SongListHandler.songName);
         }else {
             isPlayMp3 = false;
             playBtn.setText("Play");
@@ -115,11 +120,13 @@ public class MainActivity extends AppCompatActivity {
         isPlayMp3 = true;
         playBtn.setText("Pause");
         mp3Controller.prevMp3Song(appData);
+        songName.setText(appData.mp3SongListHandler.songName);
     }
 
     public void nextFun(View view){
         isPlayMp3 = true;
         playBtn.setText("Pause");
         mp3Controller.nextMp3Song(appData);
+        songName.setText(appData.mp3SongListHandler.songName);
     }
 }

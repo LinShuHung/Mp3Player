@@ -13,6 +13,7 @@ public class Mp3SongListHandler {
     private ContentResolver mp3ContentResolver;
     public ArrayList<String> mp3SongList;
     public int playIndex;
+    public String songName;
 
     public Mp3SongListHandler(ContentResolver contentResolver){
         this.mp3ContentResolver = contentResolver;
