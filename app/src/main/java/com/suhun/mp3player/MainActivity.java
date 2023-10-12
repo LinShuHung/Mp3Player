@@ -7,15 +7,19 @@ import androidx.core.content.ContextCompat;
 import android.Manifest;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
     private String tag = MainActivity.class.getSimpleName();
     private AppData appData;
+    private Button playBtn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        initView();
         if(isSendUserPermissionRequestAboutMp3Player()){
             requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 123);
         }else {
@@ -35,6 +39,16 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    private void initView(){
+        playBtn = findViewById(R.id.lid_playBtn);
+        playBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                playFun();
+            }
+        });
+    }
+
     private void initMp3Player(){
         appData = (AppData) getApplication();
         appData.mp3SongListHandler = new Mp3SongListHandler(getContentResolver());
@@ -50,5 +64,21 @@ public class MainActivity extends AppCompatActivity {
             result = true;
         }
         return result;
+    }
+
+    public void playFun(){
+
+    }
+
+    public void stopFun(View view){
+
+    }
+
+    public void prevFun(View view){
+
+    }
+
+    public void nextFun(View view){
+
     }
 }
