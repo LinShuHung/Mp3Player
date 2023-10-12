@@ -112,10 +112,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void prevFun(View view){
-
+        mp3Controller.prevMp3Song(appData);
     }
 
     public void nextFun(View view){
-
+        mp3Controller.nextMp3Song(appData);
     }
 }
