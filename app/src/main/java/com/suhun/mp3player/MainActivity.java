@@ -20,7 +20,8 @@ public class MainActivity extends AppCompatActivity {
     private String tag = MainActivity.class.getSimpleName();
     private AppData appData;
     private Button playBtn;
-    private Binder mp3Controller;
+    private Mp3PlayerController mp3Controller;
+    private boolean isPlayMp3;
 
     private ServiceConnection serviceConnection = new ServiceConnection() {
         @Override
@@ -92,11 +93,22 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void playFun(){
+        if(!isPlayMp3) {
+            isPlayMp3 = true;
+            playBtn.setText("Pause");
+            mp3Controller.playMp3Song(appData);
+        }else {
+            isPlayMp3 = false;
+            playBtn.setText("Play");
+//            mp3Controller.pauseMp3Song();
+        }
 
     }
 
     public void stopFun(View view){
-
+        isPlayMp3 = false;
+        playBtn.setText("Play");
+        mp3Controller.stopMp3Song();
     }
 
     public void prevFun(View view){

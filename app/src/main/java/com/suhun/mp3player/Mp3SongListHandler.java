@@ -12,10 +12,12 @@ public class Mp3SongListHandler {
     private String tag = Mp3SongListHandler.class.getSimpleName();
     private ContentResolver mp3ContentResolver;
     public ArrayList<String> mp3SongList;
+    public int playIndex;
 
     public Mp3SongListHandler(ContentResolver contentResolver){
         this.mp3ContentResolver = contentResolver;
         mp3SongList = new ArrayList<String>();
+        playIndex = 0;
     }
 
     public void genMp3SongList(){

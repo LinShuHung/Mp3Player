@@ -11,6 +11,7 @@ public class Mp3PlayerService extends Service {
     private String tag = Mp3PlayerService.class.getSimpleName();
     private MediaPlayer mediaPlayer;
     private Binder mp3PlayerController;
+    private AppData appData;
     public Mp3PlayerService() {
         mediaPlayer = new MediaPlayer();
         mp3PlayerController = new Mp3PlayerController(mediaPlayer);
@@ -32,6 +33,8 @@ public class Mp3PlayerService extends Service {
     public void onCreate() {
         Log.d(tag, "----Mp3PlayerService onCreate----");
         super.onCreate();
+        appData = (AppData) getApplication();
+        appData.mediaPlayer = mediaPlayer;
     }
 
     @Override
