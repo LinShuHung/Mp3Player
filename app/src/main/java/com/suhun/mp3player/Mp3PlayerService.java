@@ -2,18 +2,24 @@ package com.suhun.mp3player;
 
 import android.app.Service;
 import android.content.Intent;
+import android.media.MediaPlayer;
+import android.os.Binder;
 import android.os.IBinder;
 import android.util.Log;
 
 public class Mp3PlayerService extends Service {
     private String tag = Mp3PlayerService.class.getSimpleName();
+    private MediaPlayer mediaPlayer;
+    private Binder mp3PlayerController;
     public Mp3PlayerService() {
+        mediaPlayer = new MediaPlayer();
+        mp3PlayerController = new Mp3PlayerController(mediaPlayer);
     }
 
     @Override
     public IBinder onBind(Intent intent) {
         Log.d(tag, "----Mp3PlayerService onBind----");
-        return null;
+        return mp3PlayerController;
     }
 
     @Override

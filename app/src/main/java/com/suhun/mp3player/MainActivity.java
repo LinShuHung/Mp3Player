@@ -9,6 +9,7 @@ import android.content.ComponentName;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.content.pm.PackageManager;
+import android.os.Binder;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.view.View;
@@ -19,11 +20,12 @@ public class MainActivity extends AppCompatActivity {
     private String tag = MainActivity.class.getSimpleName();
     private AppData appData;
     private Button playBtn;
+    private Binder mp3Controller;
 
     private ServiceConnection serviceConnection = new ServiceConnection() {
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {
-
+            mp3Controller = (Mp3PlayerController) service;
         }
 
         @Override
