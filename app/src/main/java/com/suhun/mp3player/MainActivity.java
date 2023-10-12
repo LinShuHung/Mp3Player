@@ -112,10 +112,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void prevFun(View view){
+        isPlayMp3 = true;
+        playBtn.setText("Pause");
         mp3Controller.prevMp3Song(appData);
     }
 
     public void nextFun(View view){
+        isPlayMp3 = true;
+        playBtn.setText("Pause");
         mp3Controller.nextMp3Song(appData);
     }
 }
