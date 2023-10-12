@@ -13,8 +13,7 @@ public class Mp3PlayerService extends Service {
     @Override
     public IBinder onBind(Intent intent) {
         Log.d(tag, "----Mp3PlayerService onBind----");
-        // TODO: Return the communication channel to the service.
-        throw new UnsupportedOperationException("Not yet implemented");
+        return null;
     }
 
     @Override

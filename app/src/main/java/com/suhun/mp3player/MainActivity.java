@@ -5,8 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
 import android.Manifest;
+import android.content.ComponentName;
+import android.content.Intent;
+import android.content.ServiceConnection;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.os.IBinder;
 import android.view.View;
 import android.widget.Button;
 
@@ -15,6 +19,18 @@ public class MainActivity extends AppCompatActivity {
     private String tag = MainActivity.class.getSimpleName();
     private AppData appData;
     private Button playBtn;
+
+    private ServiceConnection serviceConnection = new ServiceConnection() {
+        @Override
+        public void onServiceConnected(ComponentName name, IBinder service) {
+
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName name) {
+
+        }
+    };
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,6 +41,12 @@ public class MainActivity extends AppCompatActivity {
         }else {
             initMp3Player();
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        unbindService(serviceConnection);
     }
 
     @Override
@@ -53,7 +75,8 @@ public class MainActivity extends AppCompatActivity {
         appData = (AppData) getApplication();
         appData.mp3SongListHandler = new Mp3SongListHandler(getContentResolver());
         appData.mp3SongListHandler.genMp3SongList();
-
+        Intent intent = new Intent(this, Mp3PlayerService.class);
+        bindService(intent, serviceConnection, BIND_AUTO_CREATE);
     }
 
     private boolean isSendUserPermissionRequestAboutMp3Player(){
