@@ -37,6 +37,8 @@ public class MainActivity extends AppCompatActivity {
 
     private void initMp3Player(){
         appData = (AppData) getApplication();
+        appData.mp3SongListHandler = new Mp3SongListHandler(getContentResolver());
+        appData.mp3SongListHandler.genMp3SongList();
 
     }
 
